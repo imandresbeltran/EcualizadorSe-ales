@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #112C39;</string>
+   </property>
+   <widget class="QMenu" name="menuARCHIVO">
+    <property name="styleSheet">
+     <string notr="true">color: 5DF890;  
+font-family: 'Montserrat'; 
+font-size: 24px;</string>
+    </property>
+    <property name="title">
+     <string>ARCHIVO</string>
+    </property>
+    <addaction name="actionNUEVO"/>
+    <addaction name="actionIMPORTAR"/>
+    <addaction name="actionEXPORTAR"/>
+   </widget>
+   <widget class="QMenu" name="menuGRABAR">
+    <property name="title">
+     <string>GRABAR</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuECUALIZACI_N">
+    <property name="title">
+     <string>ECUALIZACIÓN</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAN_LISIS_DE_FRECUENCIA">
+    <property name="styleSheet">
+     <string notr="true">color: 5DF890;</string>
+    </property>
+    <property name="title">
+     <string>ANÁLISIS DE FRECUENCIA</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuCONFIGURACI_N">
+    <property name="title">
+     <string>CONFIGURACIÓN</string>
+    </property>
+   </widget>
+   <addaction name="menuARCHIVO"/>
+   <addaction name="menuGRABAR"/>
+   <addaction name="menuECUALIZACI_N"/>
+   <addaction name="menuAN_LISIS_DE_FRECUENCIA"/>
+   <addaction name="menuCONFIGURACI_N"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNUEVO">
+   <property name="text">
+    <string>NUEVO</string>
+   </property>
+  </action>
+  <action name="actionIMPORTAR">
+   <property name="text">
+    <string>IMPORTAR</string>
+   </property>
+  </action>
+  <action name="actionEXPORTAR">
+   <property name="text">
+    <string>EXPORTAR</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
