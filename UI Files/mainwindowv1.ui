@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>604</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>604</width>
      <height>33</height>
     </rect>
    </property>
@@ -31,9 +31,7 @@
    </property>
    <widget class="QMenu" name="menuARCHIVO">
     <property name="styleSheet">
-     <string notr="true">color: 5DF890;  
-font-family: 'Montserrat'; 
-font-size: 24px;</string>
+     <string notr="true"/>
     </property>
     <property name="title">
      <string>ARCHIVO</string>
@@ -51,6 +49,11 @@ font-size: 24px;</string>
     <property name="title">
      <string>ECUALIZACIÓN</string>
     </property>
+    <addaction name="actionFILTRO_1"/>
+    <addaction name="actionFILTRO_2"/>
+    <addaction name="actionFILTRO_3"/>
+    <addaction name="actionFILTRO_4"/>
+    <addaction name="actionFILTRO_5"/>
    </widget>
    <widget class="QMenu" name="menuAN_LISIS_DE_FRECUENCIA">
     <property name="styleSheet">
@@ -64,6 +67,8 @@ font-size: 24px;</string>
     <property name="title">
      <string>CONFIGURACIÓN</string>
     </property>
+    <addaction name="actionESTILO"/>
+    <addaction name="actionSALIR"/>
    </widget>
    <addaction name="menuARCHIVO"/>
    <addaction name="menuGRABAR"/>
@@ -85,6 +90,41 @@ font-size: 24px;</string>
   <action name="actionEXPORTAR">
    <property name="text">
     <string>EXPORTAR</string>
+   </property>
+  </action>
+  <action name="actionFILTRO_1">
+   <property name="text">
+    <string>FILTRO 1</string>
+   </property>
+  </action>
+  <action name="actionFILTRO_2">
+   <property name="text">
+    <string>FILTRO 2</string>
+   </property>
+  </action>
+  <action name="actionFILTRO_3">
+   <property name="text">
+    <string>FILTRO 3</string>
+   </property>
+  </action>
+  <action name="actionFILTRO_4">
+   <property name="text">
+    <string>FILTRO 4</string>
+   </property>
+  </action>
+  <action name="actionFILTRO_5">
+   <property name="text">
+    <string>FILTRO 5</string>
+   </property>
+  </action>
+  <action name="actionESTILO">
+   <property name="text">
+    <string>ESTILO</string>
+   </property>
+  </action>
+  <action name="actionSALIR">
+   <property name="text">
+    <string>SALIR</string>
    </property>
   </action>
  </widget>

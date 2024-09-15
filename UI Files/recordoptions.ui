@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RecordOptions</class>
+ <widget class="QMainWindow" name="RecordOptions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: #112C39;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="ContenedorEncabezado">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>811</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	background-color: #112C39;
+	width: 711px;
+	height: 89px;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="TituloPantalla">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>351</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 24px;
+	color: #5DF890;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>¡GRABA TU OBRA DE ARTE!</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="ContenedorPrincipal">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>811</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame{
+	background-color: #113E53;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="Duracion">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>70</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 20px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>DURACIÓN (s)</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="TiempoGrabacion">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>70</y>
+       <width>221</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {
+    height: 4px;
+    background: #D8D8D8;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+    background: #5DF890; /* Color del handle */
+    border: 1px solid #5DF890;
+    width: 18px;
+    height: 18px;
+    margin: -7px 0; /* Para centrar el handle en el groove */
+    border-radius: 9px; /* Bordes redondeados */
+}
+
+QSlider::handle:horizontal:hover {
+    background: #112C39; /* Color del handle cuando el cursor pasa encima */
+}
+
+QSlider::sub-page:horizontal {
+    background: #5DF890; /* Color de la parte ya deslizada */
+    border: 1px solid #5DF890;
+    height: 4px;
+    border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+    background: #D8D8D8; /* Color de la parte no deslizada */
+    border: 1px solid #D8D8D8;
+    height: 4px;
+    border-radius: 5px;
+}
+</string>
+     </property>
+     <property name="minimum">
+      <number>10</number>
+     </property>
+     <property name="maximum">
+      <number>40</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SegundosGrabacion">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>70</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 14px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="FormatoGrabacion">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>110</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 20px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>FORMATO</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="SeleccionFormatoGrabacion">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>120</y>
+       <width>141</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    font-family: &quot;Montserrat&quot;;            /* Tipografía */
+    font-size: 14px;               /* Tamaño de la fuente */
+    color: white;                  /* Color del texto */
+    background-color: #112C39;     /* Color de fondo */
+    border: 1px solid #112C39;     /* Borde del ComboBox */
+    border-radius: 5px;            /* Bordes redondeados */
+    padding: 5px;                  /* Espacio interno */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #5DF890;
+    border-left-style: solid;
+    background-color: #5DF890;    /* Fondo del botón desplegable */
+}
+
+
+QComboBox QAbstractItemView {
+    font-family: &quot;Montserrat&quot;;            /* Tipografía del desplegable */
+    font-size: 14px;               /* Tamaño del texto del desplegable */
+    color: #112C39;                  /* Color del texto en el desplegable */
+    background-color: #D8D8D8;     /* Fondo del desplegable */
+    selection-background-color: #5DF890;  /* Fondo al seleccionar un elemento */
+    selection-color: white;      /* Color del texto del elemento seleccionado */
+    border: 1px solid #5DF890;     /* Borde del desplegable */
+}
+</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>.MP3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>.WAV</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="IniciarGrabacion">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>200</y>
+       <width>75</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #5DF890; /* Color de fondo verde */
+    border: 2px solid #5DF890; /* Borde verde oscuro */
+	font-family: &quot;Montserrat&quot;;
+    color: D8D8D8; /* Color de texto blanco */
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>GRABAR</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>TiempoGrabacion</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>SegundosGrabacion</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>578</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>669</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
