@@ -2,7 +2,6 @@ import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
 from DESIGN_FILES.main_window import Ui_MainWindow
 from DESIGN_FILES.record_design import Ui_RecordOptions
-from FUNCTIONS import recorder
 from FUNCTIONS.recorder import AudioRecorder
 
 class MainWindow(QMainWindow):
@@ -33,7 +32,7 @@ class RecordOptions(QMainWindow):
 
         # Instanciando la clase Recorder para manejar la grabación
 
-        self.recorder = recorder(self)
+        self.recorder = AudioRecorder(self)
 
         # Conectando el botón de grabación con la función que comienza la misma
         self.ui.IniciarGrabacion.clicked.connect(self.iniciar_grabacion)
