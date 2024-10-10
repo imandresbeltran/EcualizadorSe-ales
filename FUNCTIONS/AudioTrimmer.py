@@ -18,7 +18,7 @@ class AudioTrimmer(QMainWindow):
         self.ui.SegundosGrabacion_4.setText(self.file_name())
         self.ui.SegundosGrabacion_5.setText(f"{self.duration_seconds:.2f} segundos")
 
-        self.ui.TiempoGrabacion_3.setMaximum(int(self.duration_seconds))
+        self.ui.TiempoGrabacion_3.setMaximum(40)
         self.ui.TiempoGrabacion_3.setMinimum(10)
         self.ui.TiempoGrabacion_3.valueChanged.connect(self.update_trim_duration)
 
@@ -33,7 +33,7 @@ class AudioTrimmer(QMainWindow):
     
     def update_trim_duration(self):
         self.trim_duration = self.ui.TiempoGrabacion_3.value()
-        self.ui.SegundosGrabacion_3.setText(f"Recortar a: {self.trim_duration:.2f} segunddos")
+        self.ui.SegundosGrabacion_3.setText(f"{self.trim_duration:.0f} sec")
 
     def recortar_audio(self):
         try:
