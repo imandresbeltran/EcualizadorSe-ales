@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="ContenedorEncabezado_2">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>0</y>
+      <width>841</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	background-color: #112C39;
+	width: 711px;
+	height: 89px;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="TituloPantalla_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>30</y>
+       <width>351</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 24px;
+	color: #5DF890;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>¡AJUSTA TU CREACIÓN!</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="ContenedorPrincipal_3">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>80</y>
+      <width>921</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame{
+	background-color: #113E53;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="Duracion_3">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>120</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 20px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>Recorte:</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="TiempoGrabacion_3">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>120</y>
+       <width>221</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {
+    height: 4px;
+    background: #D8D8D8;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+    background: #5DF890; /* Color del handle */
+    border: 1px solid #5DF890;
+    width: 18px;
+    height: 18px;
+    margin: -7px 0; /* Para centrar el handle en el groove */
+    border-radius: 9px; /* Bordes redondeados */
+}
+
+QSlider::handle:horizontal:hover {
+    background: #112C39; /* Color del handle cuando el cursor pasa encima */
+}
+
+QSlider::sub-page:horizontal {
+    background: #5DF890; /* Color de la parte ya deslizada */
+    border: 1px solid #5DF890;
+    height: 4px;
+    border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+    background: #D8D8D8; /* Color de la parte no deslizada */
+    border: 1px solid #D8D8D8;
+    height: 4px;
+    border-radius: 5px;
+}
+</string>
+     </property>
+     <property name="minimum">
+      <number>10</number>
+     </property>
+     <property name="maximum">
+      <number>40</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SegundosGrabacion_3">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>120</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 14px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="IniciarGrabacion_3">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>200</y>
+       <width>161</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #5DF890; /* Color de fondo verde */
+    border: 2px solid #5DF890; /* Borde verde oscuro */
+	font-family: &quot;Montserrat&quot;;
+    color: D8D8D8; /* Color de texto blanco */
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>RECORTAR Y GUARDAR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Duracion_4">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 20px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>Nombre:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SegundosGrabacion_4">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>30</y>
+       <width>301</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 14px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Duracion_5">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>70</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 20px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string>Duración actual:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SegundosGrabacion_5">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>70</y>
+       <width>201</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font-family: &quot;Montserrat&quot;;
+	font-size: 14px;
+	color: #D8D8D8;
+	font-weight: bold;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="IniciarGrabacion_4">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>200</y>
+       <width>161</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #5DF890; /* Color de fondo verde */
+    border: 2px solid #5DF890; /* Borde verde oscuro */
+	font-family: &quot;Montserrat&quot;;
+    color: D8D8D8; /* Color de texto blanco */
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>RECORTAR Y CARGAR</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
