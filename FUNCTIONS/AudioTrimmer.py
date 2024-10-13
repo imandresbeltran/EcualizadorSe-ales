@@ -1,7 +1,9 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 from DESIGN_FILES.trimmer import Ui_MainWindow as TrimmerUI
+from FUNCTIONS.AudioPlayer import AudioPlayer
 from pydub import AudioSegment
 import os
+import tempfile
 
 class AudioTrimmer(QMainWindow):
     def __init__(self, file_path, duration_seconds):
@@ -14,6 +16,7 @@ class AudioTrimmer(QMainWindow):
         self.file_path = file_path
         self.duration_seconds = duration_seconds
         self.audio = AudioSegment.from_file(self.file_path)
+        self.editor_window = None
 
         self.ui.SegundosGrabacion_4.setText(self.file_name())
         self.ui.SegundosGrabacion_5.setText(f"{self.duration_seconds:.2f} segundos")
@@ -69,7 +72,23 @@ class AudioTrimmer(QMainWindow):
 
             if trimmed_audio:
                 try:
+                    temp_fd, temp_path = tempfile.mkstemp(suffix=".mp3")
+                    os.close(temp_fd)
+
+                    trimmed_audio.export(temp_path, format="mp3"
+                                         )
                     QMessageBox.information(self, "Cargado", "Archivo recortado cargado correctamente en el sistema.")
                     #Reproducción se insertará en esta parte
+                    self.open_editor_window(temp_path)
                 except Exception as e:
                     QMessageBox.critical(self, "Error", f"Error al cargar el archivo: {str(e)}")
+
+    def open_editor_window(self, file_path):
+        try:
+            self.editor_window = AudioPlayer(file_path)
+            self.editor_window.show()
+            self.close()
+        except Exception as e:
+            print(f"Error al abrir el editor: {e}")
+            QMessageBox.critical(self, "Error", f"Error al abrir el editor: {str(e)}")
+        
