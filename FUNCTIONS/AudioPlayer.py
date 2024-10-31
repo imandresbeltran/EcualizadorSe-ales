@@ -1,8 +1,10 @@
 import pygame
 import os
+import time
 from PySide6.QtWidgets import QMainWindow, QMessageBox
 from PySide6.QtCore import QTimer
 from DESIGN_FILES.player import Ui_MainWindow as PlayerUI
+from FUNCTIONS.AudioSessionManager import AudioSessionManager
 
 class AudioPlayer(QMainWindow):
     def __init__(self, file_path, parent=None):
@@ -13,8 +15,12 @@ class AudioPlayer(QMainWindow):
         #Pygame para la reproducción del audio
         pygame.mixer.init()
 
-        self.file_path = file_path
+        self.audio_manager = AudioSessionManager()
+        self.file_path = self.audio_manager.save_audio_copy(file_path)
         self.audio_length = 0
+        self.current_position = 0
+        self.is_playing = False
+        self.is_paused = False
 
         self.ui.pushButton_Play.clicked.connect(self.play_audio)
         self.ui.pushButton_Pause.clicked.connect(self.pause_audio)
@@ -23,9 +29,6 @@ class AudioPlayer(QMainWindow):
         self.ui.pushButton_Seek_Forward.clicked.connect(self.seek_forward)
         self.ui.ContadorTiempo_2.valueChanged.connect(self.adjust_volume)
         self.ui.ContadorTiempo.sliderMoved.connect(self.seek_audio)
-
-        self.is_playing = False
-        self.is_paused = False
 
         self.timer = QTimer(self)
         self.timer.setInterval(1000)
@@ -48,20 +51,27 @@ class AudioPlayer(QMainWindow):
             QMessageBox.critical(self, "Error", f"Error al cargar el archivo de audio: {str(e)}")
 
     def play_audio(self):
-        if not self.is_paused:
-            pygame.mixer.music.play()
-            self.timer.start()
-        else:
-            pygame.mixer.music.unpause()
-            self.timer.start()
-        self.is_playing = True
-        self.is_paused = False
+        try:
+            if not self.is_paused:
+                pygame.mixer.music.load(self.file_path)
+                pygame.mixer.music.play(start=self.current_position)
+                self.timer.start()
+            else:
+                pygame.mixer.music.unpause()
+                self.timer.start()
+                
+            self.is_playing = True
+            self.is_paused = False
+
+        except Exception as e:
+            print(f"Error al reproducir el audio: {e}")
 
     def pause_audio(self):
         if self.is_playing:
             pygame.mixer.music.pause()
             self.timer.stop()
             self.is_paused = True
+            self.current_position = pygame.mixer.music.get_pos() / 1000
 
     def stop_audio(self):
         pygame.mixer.music.stop()
@@ -69,9 +79,7 @@ class AudioPlayer(QMainWindow):
         self.is_paused = False
         self.timer.stop()
         self.ui.ContadorTiempo.setValue(0)
-
-        if os.path.exists(self.file_path):
-            os.remove(self.file_path)
+        self.current_position = 0
 
     def seek_audio(self, position):
         if self.is_playing or self.is_paused:
@@ -83,14 +91,21 @@ class AudioPlayer(QMainWindow):
             self.timer.start()
 
     def seek_backward(self):
-        current_position = pygame.mixer.music.get_pos() / 1000
-        new_position = max(0, current_position - 5)
-        self.seek_audio(new_position)
+        self.current_position = max(0, self.current_position - 5)
+        self.load_and_play_from_current_position()
 
     def seek_forward(self):
-        current_position = pygame.mixer.music.get_pos() / 1000
-        new_position = min(self.audio_length, current_position + 5)
-        self.seek_audio(new_position)
+        self.current_position = min(self.audio_length, self.current_position + 5)
+        self.load_and_play_from_current_position()
+
+    def load_and_play_from_current_position(self):
+        try:
+            pygame.mixer.music.load(self.file_path)
+            pygame.mixer.music.play(start=self.current_position)
+            self.is_playing = True
+            self.is_paused = False
+        except Exception as e:
+            print(f"Error al ajustar la posición y reproducir el audio: {e}")
 
     def adjust_volume(self):
         volume = self.ui.ContadorTiempo_2.value() / 100
@@ -103,6 +118,10 @@ class AudioPlayer(QMainWindow):
 
         if int(current_position) >= int(self.audio_length):
             self.timer.stop()
+
+    def closeEvent(self, event):
+        self.audio_manager.clean_up()
+        event.accept()
 
     
     @staticmethod
