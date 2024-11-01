@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'player.ui'
+## Form generated from reading UI file 'EQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QMainWindow,
-    QPushButton, QSizePolicy, QSlider, QStatusBar,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QLabel,
+    QMainWindow, QPushButton, QSizePolicy, QSlider,
+    QStatusBar, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -195,6 +195,46 @@ class Ui_MainWindow(object):
         self.Label_Start_2.setObjectName(u"Label_Start_2")
         self.Label_Start_2.setGeometry(QRect(500, 80, 49, 16))
         self.Label_Start_2.setFont(font)
+        self.comboBox = QComboBox(self.ContenedorEncabezado_3)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setGeometry(QRect(620, 40, 141, 31))
+        self.comboBox.setStyleSheet(u"QComboBox {\n"
+"    border: 1px solid #5DF890; /* Borde del combobox */\n"
+"    border-radius: 5px; /* Bordes redondeados */\n"
+"    background-color: #5DF890; /* Color de fondo */\n"
+"    padding: 5px; /* Espaciado interno */\n"
+"    font-size: 14px; /* Tama\u00f1o de la fuente */\n"
+"    color: #FFFFFF; /* Color del texto */\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    border: none; /* Sin borde para la parte desplegable */\n"
+"}\n"
+"\n"
+"QComboBox::arrow {\n"
+"    image: url('path/to/arrow/image.png'); /* Cambiar la flecha por una imagen personalizada */\n"
+"    width: 10px; /* Ancho de la flecha */\n"
+"    height: 10px; /* Alto de la flecha */\n"
+"}\n"
+"\n"
+"QComboBox::item {\n"
+"    background-color: #F0F0F0; /* Color de fondo de los elementos del men\u00fa desplegable */\n"
+"    color: #333333; /* Color del texto de los elementos */\n"
+"}\n"
+"\n"
+"QComboBox::item:selected {\n"
+"    background-color: #4A90E2; /* Color de fondo al seleccionar un elemento */\n"
+"    color: #FFFFFF; /* Color del texto al se"
+                        "leccionar un elemento */\n"
+"}\n"
+"")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -215,5 +255,13 @@ class Ui_MainWindow(object):
         self.pushButton_Volume.setText("")
         self.Label_Start.setText(QCoreApplication.translate("MainWindow", u"00:00:00", None))
         self.Label_Start_2.setText(QCoreApplication.translate("MainWindow", u"00:00:00", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Normal", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Pop", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Rock", None))
+        self.comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"New Item", None))
+        self.comboBox.setItemText(4, QCoreApplication.translate("MainWindow", u"Jazz", None))
+        self.comboBox.setItemText(5, QCoreApplication.translate("MainWindow", u"Classical", None))
+        self.comboBox.setItemText(6, QCoreApplication.translate("MainWindow", u"Bass Boost", None))
+
     # retranslateUi
 
