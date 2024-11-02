@@ -1,9 +1,10 @@
 import pygame
-from PySide6.QtWidgets import QMainWindow, QMessageBox
+from PySide6.QtWidgets import QMainWindow, QMessageBox, QComboBox
 from PySide6.QtCore import QTimer
 from DESIGN_FILES.player import Ui_MainWindow as PlayerUI
 from FUNCTIONS.AudioSessionManager import AudioSessionManager
 from FUNCTIONS.AudioController import AudioController
+from FUNCTIONS.Equalizer import Equalizer
 
 class AudioPlayer(QMainWindow):
     def __init__(self, file_path, parent=None):
@@ -13,7 +14,8 @@ class AudioPlayer(QMainWindow):
 
         self.audio_manager = AudioSessionManager()
         self.file_path = self.audio_manager.save_audio_copy(file_path)
-        self.audio_controller = AudioController(self.file_path)
+        self.equalizer = Equalizer()
+        self.audio_controller = AudioController(self.file_path, self.equalizer)
 
         self.ui.pushButton_Play.clicked.connect(self.play_audio)
         self.ui.pushButton_Pause.clicked.connect(self.pause_audio)
@@ -28,6 +30,7 @@ class AudioPlayer(QMainWindow):
         self.timer.timeout.connect(self.update_progress)
 
         self.load_audio()
+        self.setup_equalizer()
 
     def load_audio(self):
         try:
@@ -82,6 +85,19 @@ class AudioPlayer(QMainWindow):
     def closeEvent(self, event):
         self.audio_manager.clean_up()
         event.accept()
+
+    def setup_equalizer(self):
+        self.ui.comboBox = QComboBox(self)
+        self.ui.comboBox.addItems(self.equalizer.modes.keys())
+        self.ui.comboBox.currentTextChanged.connect(self.change_equalizer_mode)
+        #self.ui.verticalLayout.addWidget(self.ui.comboBox_Equalizer)
+
+    def change_equalizer_mode(self, mode):
+        self.equalizer.set_mode(mode)
+        self.audio_controller.apply_equalizer()
+        if self.audio_controller.is_playing:
+            self.audio_controller.load_audio()
+            self.audio_controller.play_audio()
 
     @staticmethod
     def format_time(seconds):
