@@ -5,6 +5,7 @@ from DESIGN_FILES.player import Ui_MainWindow as PlayerUI
 from FUNCTIONS.AudioSessionManager import AudioSessionManager
 from FUNCTIONS.AudioController import AudioController
 from FUNCTIONS.Equalizer import Equalizer
+from FUNCTIONS.AudioVisualizer import AudioVisualizer
 
 class AudioPlayer(QMainWindow):
     def __init__(self, file_path, parent=None):
@@ -16,6 +17,8 @@ class AudioPlayer(QMainWindow):
         self.file_path = self.audio_manager.save_audio_copy(file_path)
         self.equalizer = Equalizer()
         self.audio_controller = AudioController(self.file_path, self.equalizer)
+        self.original_visualizer = AudioVisualizer(self.ui.original_signal_widget)
+        self.equalized_visualizer = AudioVisualizer(self.ui.equalized_signal_widget)
 
         self.ui.pushButton_Play.clicked.connect(self.play_audio)
         self.ui.pushButton_Pause.clicked.connect(self.pause_audio)
@@ -39,8 +42,18 @@ class AudioPlayer(QMainWindow):
             self.ui.Label_Start_2.setText(f"{self.format_time(self.audio_controller.get_audio_length())}")
             self.ui.ContadorTiempo_2.setValue(100)
             self.audio_controller.adjust_volume(100)
+            self.plot_original_signal()
+            self.plot_equalized_signal()
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Error al cargar el archivo de audio: {str(e)}")
+
+    def plot_original_signal(self):
+        original_signal = self.audio_controller.audio_segment.get_array_of_samples()
+        self.original_visualizer.plot_signal(original_signal, title="Original Signal")
+
+    def plot_equalized_signal(self):
+        equalized_signal = self.audio_controller.equalizer.apply_equalizer(self.audio_controller.audio_segment).get_array_of_samples()
+        self.equalized_visualizer.plot_signal(equalized_signal, title="Equalized Signal")
 
     def play_audio(self):
         try:
@@ -95,6 +108,7 @@ class AudioPlayer(QMainWindow):
     def change_equalizer_mode(self, mode):
         self.equalizer.set_mode(mode)
         self.audio_controller.apply_equalizer()
+        self.plot_equalized_signal()
         if self.audio_controller.is_playing:
             self.audio_controller.load_audio()
             self.audio_controller.play_audio()

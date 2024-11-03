@@ -19,6 +19,9 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QLabel,
     QMainWindow, QPushButton, QSizePolicy, QSlider,
     QStatusBar, QWidget)
 
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -243,6 +246,16 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+
+        self.original_signal_widget = QWidget(self.centralwidget)
+        self.original_signal_widget.setGeometry(QRect(10, 50, 450, 400))
+
+        self.original_signal_widget.setObjectName("original_signal_widget")
+
+        self.equalized_signal_widget = QWidget(self.centralwidget)
+        self.equalized_signal_widget.setGeometry(QRect(440,50,450,400))
+
+        self.equalized_signal_widget.setObjectName("equalized_signal_widget")
     # setupUi
 
     def retranslateUi(self, MainWindow):
