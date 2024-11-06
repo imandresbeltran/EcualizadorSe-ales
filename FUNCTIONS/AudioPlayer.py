@@ -6,6 +6,7 @@ from FUNCTIONS.AudioSessionManager import AudioSessionManager
 from FUNCTIONS.AudioController import AudioController
 from FUNCTIONS.Equalizer import Equalizer
 from FUNCTIONS.AudioVisualizer import AudioVisualizer
+import numpy as np
 
 class AudioPlayer(QMainWindow):
     def __init__(self, file_path, parent=None):
@@ -48,12 +49,14 @@ class AudioPlayer(QMainWindow):
             QMessageBox.critical(self, "Error", f"Error al cargar el archivo de audio: {str(e)}")
 
     def plot_original_signal(self):
-        original_signal = self.audio_controller.audio_segment.get_array_of_samples()
+        original_signal = np.array(self.audio_controller.audio_segment.get_array_of_samples())
         self.original_visualizer.plot_signal(original_signal, title="Original Signal")
 
     def plot_equalized_signal(self):
-        equalized_signal = self.audio_controller.equalizer.apply_equalizer(self.audio_controller.audio_segment).get_array_of_samples()
-        self.equalized_visualizer.plot_signal(equalized_signal, title="Equalized Signal")
+        # Extraer muestras, aplicar ecualización y obtener el resultado para graficar
+        samples = np.array(self.audio_controller.audio_segment.get_array_of_samples())
+        equalized_samples = self.audio_controller.equalizer.apply_equalizer(samples)
+        self.equalized_visualizer.plot_signal(equalized_samples, title="Equalized Signal")
 
     def play_audio(self):
         try:
@@ -103,7 +106,6 @@ class AudioPlayer(QMainWindow):
         self.ui.comboBox = QComboBox(self)
         self.ui.comboBox.addItems(self.equalizer.modes.keys())
         self.ui.comboBox.currentTextChanged.connect(self.change_equalizer_mode)
-        #self.ui.verticalLayout.addWidget(self.ui.comboBox_Equalizer)
 
     def change_equalizer_mode(self, mode):
         self.equalizer.set_mode(mode)
